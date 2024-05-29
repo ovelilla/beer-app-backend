@@ -106,7 +106,7 @@ export const login = async (req, res) => {
       secure: true,
       domain: "beer-app-backend-orcin.vercel.app",
       path: "/",
-      sameSite: "none",
+      sameSite: "Lax",
       maxAge: 24 * 60 * 60 * 1000,
     });
 
@@ -135,7 +135,7 @@ export const logout = async (req, res) => {
       secure: true,
       domain: "beer-app-backend-orcin.vercel.app",
       path: "/",
-      sameSite: "none",
+      sameSite: "Lax",
       expires: new Date(0),
     });
 
