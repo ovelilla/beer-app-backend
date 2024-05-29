@@ -21,12 +21,12 @@ dotenv.config();
 cloudinaryConfig();
 await connectDatabase();
 
-const whiteList = [process.env.FRONTEND_URL];
+const allowedOrigins = new Set([process.env.FRONTEND_URL]);
 
 const corsOptions = {
   credentials: true,
   origin: function (origin, callback) {
-    if (whiteList.includes(origin)) {
+    if (allowedOrigins.has(origin)) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));

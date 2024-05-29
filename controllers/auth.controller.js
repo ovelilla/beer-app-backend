@@ -117,7 +117,6 @@ export const login = async (req, res) => {
 export const logout = async (req, res) => {
   try {
     res.clearCookie("access_token", {
-      expires: new Date(0),
       httpOnly: true,
       partitioned: true,
       sameSite: "none",
