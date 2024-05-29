@@ -94,21 +94,22 @@ export const login = async (req, res) => {
 
     const token = generateJWT(findUser.id);
 
-    // res.cookie("access_token", token, {
-    //   expires: new Date(Date.now() + 24 * 3600000),
-    //   sameSite: "none",
-    //   secure: true,
-    //   httpOnly: true,
-    // });
-
     res.cookie("access_token", token, {
+      expires: new Date(Date.now() + 24 * 3600000),
       httpOnly: true,
+      partitioned: true,
+      sameSite: "none",
       secure: true,
-      domain: "beer-app-backend-orcin.vercel.app",
-      path: "/",
-      sameSite: "Lax",
-      maxAge: 24 * 60 * 60 * 1000,
     });
+
+    // res.cookie("access_token", token, {
+    //   httpOnly: true,
+    //   secure: true,
+    //   domain: "beer-app-backend-orcin.vercel.app",
+    //   path: "/",
+    //   sameSite: "Lax",
+    //   maxAge: 24 * 60 * 60 * 1000,
+    // });
 
     res.status(200).json({
       _id: findUser._id,
@@ -124,20 +125,21 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
   try {
-    // res.clearCookie("access_token", {
-    //   expires: new Date(Date.now() - 1),
-    //   sameSite: "none",
-    //   secure: true,
-    //   httpOnly: true,
-    // });
-    res.cookie("access_token", "", {
+    res.clearCookie("access_token", {
+      expires: new Date(Date.now() - 1),
       httpOnly: true,
+      partitioned: true,
+      sameSite: "none",
       secure: true,
-      domain: "beer-app-backend-orcin.vercel.app",
-      path: "/",
-      sameSite: "Lax",
-      expires: new Date(0),
     });
+    // res.cookie("access_token", "", {
+    //   httpOnly: true,
+    //   secure: true,
+    //   domain: "beer-app-backend-orcin.vercel.app",
+    //   path: "/",
+    //   sameSite: "none",
+    //   expires: new Date(0),
+    // });
 
     res.status(200).json({ message: "Sesión cerrada correctamente" });
   } catch (error) {
