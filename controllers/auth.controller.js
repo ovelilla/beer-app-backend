@@ -95,9 +95,11 @@ export const login = async (req, res) => {
     const token = generateJWT(findUser.id);
 
     res.cookie("access_token", token, {
-      expires: new Date(Date.now() + 24 * 3600000),
+      domain: "beer-app-backend-orcin.vercel.app",
       httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000,
       partitioned: true,
+      path: "/",
       sameSite: "none",
       secure: true,
     });
@@ -126,9 +128,11 @@ export const login = async (req, res) => {
 export const logout = async (req, res) => {
   try {
     res.clearCookie("access_token", {
-      expires: new Date(Date.now() - 1),
+      domain: "beer-app-backend-orcin.vercel.app",
+      expires: new Date(0),
       httpOnly: true,
       partitioned: true,
+      path: "/",
       sameSite: "none",
       secure: true,
     });
