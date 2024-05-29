@@ -1,11 +1,11 @@
 import express from "express";
 import {
-    register,
-    login,
-    logout,
-    auth,
-} from "../controllers/authController.js";
-import checkAuth from "../middleware/checkAuth.js";
+  register,
+  login,
+  logout,
+  auth,
+} from "../controllers/auth.controller.js";
+import checkAuth from "../middleware/checkAuth.middleware.js";
 
 const router = express.Router();
 

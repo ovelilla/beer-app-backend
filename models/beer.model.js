@@ -77,6 +77,9 @@ const beerSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    cloudinaryPublicId: {
+      type: String,
+    },
   },
   {
     timestamps: true,

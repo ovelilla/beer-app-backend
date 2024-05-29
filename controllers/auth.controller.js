@@ -1,6 +1,6 @@
-import User from "../models/User.js";
+import User from "../models/user.model.js";
 import validator from "validator";
-import generateJWT from "../helpers/generateJWT.js";
+import generateJWT from "../utils/generateJWT.util.js";
 
 export const register = async (req, res) => {
   const { email, password } = req.body;
