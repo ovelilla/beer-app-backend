@@ -104,7 +104,7 @@ export const login = async (req, res) => {
     res.cookie("access_token", token, {
       httpOnly: true,
       secure: true,
-      // domain: process.env.BACKEND_URL,
+      domain: "beer-app-backend-orcin.vercel.app",
       path: "/",
       sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
@@ -133,7 +133,7 @@ export const logout = async (req, res) => {
     res.cookie("access_token", "", {
       httpOnly: true,
       secure: true,
-      // domain: process.env.BACKEND_URL,
+      domain: "beer-app-backend-orcin.vercel.app",
       path: "/",
       sameSite: "none",
       expires: new Date(0),
