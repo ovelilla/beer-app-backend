@@ -106,7 +106,7 @@ export const login = async (req, res) => {
       secure: true,
       domain: process.env.BACKEND_URL,
       path: "/",
-      sameSite: "Lax",
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
     });
 
@@ -135,7 +135,7 @@ export const logout = async (req, res) => {
       secure: true,
       domain: process.env.BACKEND_URL,
       path: "/",
-      sameSite: "Lax",
+      sameSite: "none",
       expires: new Date(0),
     });
 
